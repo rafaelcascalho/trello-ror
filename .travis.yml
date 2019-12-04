@@ -19,6 +19,7 @@ before_script:
   - gem install bundler:2.0.2
 
 script:
+  - bundle update --bundler
   - bundle install
   - bundle exec rails db:test:prepare
   - jobs=3
