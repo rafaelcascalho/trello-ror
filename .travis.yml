@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+  - 2.0.0
+  - 1.9.3
+  - jruby-19mode
+  - rbx-2
+
+script: — bundle install — jobs=3 — retry=3
+  — bundle exec rspec spec/models
+
+deploy:
+  - provider: codedeploy
+    revision_type: github
+    access_key_id: AKIAUZBSSQFYRCNKFI6W
+    secret_access_key: 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
+    application: "trello_ror_copy"
+    deployment_group: "deploy"
+    region: "us-east-1"

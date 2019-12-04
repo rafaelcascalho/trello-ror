@@ -1,0 +1,19 @@
+<div id="notice" class="alert alert-success collapse" role="alert"><%= notice %></div>
+
+<p>
+  <strong>Name:</strong>
+  <%= @card.name %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @card.deadline %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @card.owner %>
+</p>
+
+<%= link_to 'Edit', edit_board_list_card_path(@list, @card) %> |
+<%= link_to 'Back', board_list_path(params[:board_id], @list) %>

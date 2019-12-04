@@ -1,0 +1,100 @@
+<div id="notice" class="alert alert-success collapse" role="alert"><%= notice %></div>
+
+<style>
+  body {
+    height: 395px;
+  }
+
+  a:link {
+    color: white;
+  }
+
+  a:visited {
+    color: white;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  a:active {
+    text-decoration: none;
+  }
+
+  .modal {
+    width: 100%;
+  }
+
+  .card-deck {
+    width: max-content;
+    margin-left: 3px;
+  }
+
+  #container {
+    height: 385px;
+    overflow-y: scroll;
+  }
+
+  #board-info {
+    color: #fff;
+  }
+
+  #board-actions {
+    margin-top: 15px;
+  }
+
+  #board-actions > button {
+    margin-left: 15px;
+  }
+</style>
+
+<br>
+
+<p id="board-info">
+  <strong>Board:</strong>
+  <%= @board.name %> |
+  <strong>Team:</strong>
+  <%= @board.team %>
+</p>
+
+<div class="card-deck overflow-auto">
+  <% for list in @board.lists %>
+    <div class="card">
+      <h5 class="card-header"><%= list.name %></h5>
+      <div class="card-block" id="container">
+        <div class="card-body">
+          <% for card in list.cards %>
+            <div class="card-block">
+              <div class="card-title"><%= link_to card.name, new_board_list_card_path(@board, list), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#task', class: 'btn btn-primary btn-lg'} %></div>
+              <div class="modal" id="task" tabindex="-1" role="dialog" aria-labelledby="new-task-label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="new-task-label"><%= card.name %></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h5><span>Deadline: </span><%= card.deadline %></h5>
+                      <h5><span>Owner: </span><%= card.owner %></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-title"><%= link_to 'New task', new_board_list_card_path(@board, list), {class: 'btn btn-success btn-lg'} %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div id="board-actions">
+  <button type="button" class="btn btn-secondary"><%= link_to 'Edit Board', edit_board_path(@board) %></button>
+  <button type="button" class="btn btn-secondary"><%= link_to 'New List', new_board_list_path(@board) %></button>
+  <button type="button" class="btn btn-secondary"><%= link_to 'Return to Boards', boards_path %></button>
+</div>

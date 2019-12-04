@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TrelloRor</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <style>
+      body {
+        background-color: rgba(33, 37, 41, 0.95);
+      }
+
+      h1, h2, li {
+        color: white;
+      }
+
+      .form-group > label {
+        color: white;
+      }
+    </style>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<style>
+  a:link {
+    color: white;
+  }
+
+  a:visited {
+    color: white;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  a:active {
+    text-decoration: none;
+  }
+
+  #board-actions {
+    margin-top: 15px;
+  }
+</style>
+
+<center>
+  <h1>Editing Board</h1>
+
+  <%= render 'form', board: @board %>
+
+  <div id="board-actions">
+    <button type="button" class="btn btn-secondary"><%= link_to 'Show Board', @board %></button>
+    <button type="button" class="btn btn-secondary"><%= link_to 'Back to Board', boards_path %></button>
+  </div>
+</center>

@@ -1,0 +1,67 @@
+<div id="notice" class="alert alert-success" role="alert"><%= notice %></div>
+
+<style>
+  a:link {
+    color: white;
+  }
+
+  a:visited {
+    color: white;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #0056b3;
+  }
+
+  a:active {
+    text-decoration: none;
+  }
+
+  .card-deck {
+    margin: auto;
+  }
+
+  .card {
+    display: inline-block;
+    width: 150px;
+    height: 100px;
+    margin: 15px 10px 15px 15px;
+    background-color: rgba(33, 37, 41, 1);
+  }
+
+  .card-text :hover {
+    color: rgba(255, 36, 36, 0.8);
+  }
+
+  .new-board :hover {
+    color: white;
+  }
+
+  #new-board :hover {
+    color: #28a745;
+  }
+</style>
+
+<center><h1>Boards</h1></center>
+
+<center>
+  <div class="card-deck"></div>
+    <% @boards.each do |board| %>
+      <div class="card">
+        <div class="card-block">
+          <center><h4 class="card-title"><%= link_to board.name, board %></h4></center>
+          <p class="card-text"><%= link_to 'Delete Board', board, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</center>
+
+<br>
+
+<center>
+  <button type="button" class="new-board btn btn-secondary"><%= link_to 'New Board', new_board_path %></button>
+  <br>
+  <br>
+</center>

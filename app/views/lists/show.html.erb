@@ -1,0 +1,18 @@
+<div id="notice" class="alert alert-success collapse" role="alert"><%= notice %></div>
+
+<p>
+  <strong>Name:</strong>
+  <%= @list.name %>
+</p>
+
+<h2>Cards</h2>
+<% for card in @list.cards %>
+  <ul>
+    <li>
+      <%= card.name %> | <%= link_to 'Show', board_list_card_path(@board, @list, card) %>
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to 'Edit', edit_board_list_path(@board, @list) %> |
+<%= link_to 'Back', board_path(@board) %>
